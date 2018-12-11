@@ -8,7 +8,7 @@ import RandomMatrix
 class Layer:
     def __init__(self, number_of_weights, number_of_nodes, activation="SIGM"):
         self.weights = RandomMatrix.get_random_matrix(number_of_weights, number_of_nodes)
-        self.biases = RandomMatrix.get_random_matrix(1, number_of_nodes)
+        self.biases = RandomMatrix.get_matrix_with_value(1, number_of_nodes, 1)
         self.activation = activation
         
     def get_biases(self):
