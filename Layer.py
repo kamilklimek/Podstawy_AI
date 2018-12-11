@@ -2,12 +2,14 @@ import MatrixOperations as mx
 import random
 import numpy as np
 import ActivationFunctions as func
+import RandomMatrix
 
 
 class Layer:
-    def __init__(self, height, input_size, activation="SIGM"):
-        self.weights = np.random.rand(height, input_size)
-        self.biases = np.random.rand(height, 1)
+    def __init__(self, number_of_weights, number_of_nodes, activation="SIGM"):
+        self.weights = RandomMatrix.get_random_matrix(number_of_weights, number_of_nodes)
+        #self.weights = mx.reshape(self.weights, number_of_weights, number_of_nodes)
+        self.biases = RandomMatrix.get_random_matrix(1, number_of_nodes)
         self.activation = activation
         
     def get_biases(self):
@@ -52,8 +54,14 @@ class Layer:
 
 
     def feed_forward(self, inputs: list):
-        multiply_result = mx.multiply(self.weights, inputs)
+        print("====================================")
+        print("Otrzymuje input: " + str(inputs))
+        print("Moje wagi: " + str(self.weights))
+        print("Mój bias: " + str(self.biases))
+        multiply_result = mx.multiply(inputs, self.weights)
         output = mx.add_matrix(multiply_result, self.biases)
+        print("Output przed aktywacja: " + str(output))
+        input("Type enter...")
         return self.activ(output)
 
     def __str__(self):
