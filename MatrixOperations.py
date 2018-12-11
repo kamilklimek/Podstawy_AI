@@ -18,16 +18,10 @@ def add_matrix(matrix_1, matrix_2):
     row_len = len(matrix_1)
     col_len = len(matrix_1[0])
 
-    print("Matrix 1 row: " + str(len(matrix_1)))
-    print("Matrix 1 col: " + str(len(matrix_1[0])))
-    print("Matrix 2 row: " + str(len(matrix_2)))
-    print("Matrix 2 col: " + str(len(matrix_2[0])))
-
     matrix_result = zeros_matrix(row_len, col_len)
 
     for i in range(row_len):
         for j in range(col_len):
-            print((i,j))
             matrix_result[i][j] = matrix_1[i][j] + matrix_2[i][j]
     
     return matrix_result

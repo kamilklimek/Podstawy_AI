@@ -15,7 +15,12 @@ class NeuralNetwork:
         output = inputs.copy()
         layer_nr = 1
         for layer in self.layers:
-            print("Layer numer: " + str(layer_nr))
             layer_nr+=1
             output = layer.feed_forward(output)
         return output
+
+    def __str__(self):
+        out = ""
+        for layer in self.layers:
+            out += str(layer) + "\n"
+        return out

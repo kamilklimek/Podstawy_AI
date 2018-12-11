@@ -8,7 +8,6 @@ import RandomMatrix
 class Layer:
     def __init__(self, number_of_weights, number_of_nodes, activation="SIGM"):
         self.weights = RandomMatrix.get_random_matrix(number_of_weights, number_of_nodes)
-        #self.weights = mx.reshape(self.weights, number_of_weights, number_of_nodes)
         self.biases = RandomMatrix.get_random_matrix(1, number_of_nodes)
         self.activation = activation
         
@@ -54,14 +53,8 @@ class Layer:
 
 
     def feed_forward(self, inputs: list):
-        print("====================================")
-        print("Otrzymuje input: " + str(inputs))
-        print("Moje wagi: " + str(self.weights))
-        print("Mój bias: " + str(self.biases))
         multiply_result = mx.multiply(inputs, self.weights)
         output = mx.add_matrix(multiply_result, self.biases)
-        print("Output przed aktywacja: " + str(output))
-        input("Type enter...")
         return self.activ(output)
 
     def __str__(self):
